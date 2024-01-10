@@ -34,6 +34,25 @@ for colname in df.select_dtypes("object"):
     
 print(df)
 
+
+
+datasets
+Outlook,Temperature,Humidity,Wind,PlayTennis
+Sunny,hot,high,weak,no
+Sunny,hot,high,strong,no
+Overcast,hot,high,weak,yes
+Rainy,mild,high,weak,yes
+Rainy,cool,normal,weak,yes
+Rainy,cool,normal,strong,no
+Overcast,cool,normal,strong,yes
+Sunny,mild,high,weak,no
+Sunny,cool,normal,weak,yes
+Rainy,mild,normal,weak,yes
+Sunny,mild,normal,strong,yes
+Overcast,mild,high,strong,yes
+Overcast,hot,normal,weak,yes
+Rainy,mild,high,strong,no
+
 tree= id3(df,"PlayTennis", attribute_names)
 print("The tree structure")
 pprint(tree)
