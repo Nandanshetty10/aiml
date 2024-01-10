@@ -1,0 +1,46 @@
+ import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
+data = pd.read_csv('Naan.csv')
+print("The first 5 Values of data is :\n", data.head())
+X = data.iloc[:, :-1]
+print("\nThe First 5 values of the train attributes is\n", X.head())
+Y = data.iloc[:, -1]
+print("\nThe First 5 values of target values is\n", Y.head())
+obj1= LabelEncoder()
+X.Outlook = obj1.fit_transform(X.Outlook)
+print("\n The Encoded and Transformed Data in Outlook\n",X.Outlook)
+obj2 = LabelEncoder()
+X.Temperature = obj2.fit_transform(X.Temperature)
+obj3 = LabelEncoder()
+X.Humidity = obj3.fit_transform(X.Humidity)
+obj4 = LabelEncoder()
+X.Wind = obj4.fit_transform(X.Wind)
+print("\n The Encoded and Transformed Training Examples \n", X.head())
+obj5 = LabelEncoder()
+Y = obj5.fit_transform(Y)
+print("The class Label encoded in numerical form is",Y)
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y, test_size =
+0.20)
+from sklearn.naive_bayes import GaussianNB
+classifier = GaussianNB()
+classifier.fit(X_train, Y_train)
+from sklearn.metrics import accuracy_score
+print("Accuracy is:", accuracy_score(classifier.predict(X_test), Y_test))
+
+
+datasets
+0 Sunny Hot High Weak No
+1 Sunny Hot High Strong No
+2 Overcast Hot High Weak Yes
+3 Rain Mild High Weak Yes
+4 Rain Cool Normal Weak Yes
+5 Rain Cool Normal Strong No
+6 Overcast Cool Normal Strong Yes
+7 Sunny Mild High Weak No
+8 Sunny Cool Normal Weak Yes
+9 Rain Mild Normal Weak Yes
+10 Sunny Mild Normal Strong Yes
+11 Overcast Mild High Strong Yes
+12 Overcast Hot Normal Weak Yes
+13 Rain Mild High Strong No
