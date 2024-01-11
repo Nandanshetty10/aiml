@@ -33,7 +33,9 @@ for colname in df.select_dtypes("object"):
     df[colname], _ = df[colname].factorize()
     
 print(df)
-
+tree= id3(df,"PlayTennis", attribute_names)
+print("The tree structure")
+pprint(tree)
 
 
 datasets
@@ -53,6 +55,4 @@ Overcast,mild,high,strong,yes
 Overcast,hot,normal,weak,yes
 Rainy,mild,high,strong,no
 
-tree= id3(df,"PlayTennis", attribute_names)
-print("The tree structure")
-pprint(tree)
+
